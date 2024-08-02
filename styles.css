@@ -37,7 +37,7 @@ body {
     padding: 0; 
 }
 
-#delete, #clear, #negate{
+.config{
     background-color:#A4D046;
     color: white;
     font-weight: bold;
@@ -45,6 +45,7 @@ body {
 }
 
 .operation{
+    font-weight: 40%;
     background-color: #E3B261;
 }
 
@@ -70,10 +71,13 @@ button{
     background-color: #ffd798;
 }
 
-.top:active{
-    background-color: #a52222;
+.config:active{
+    background-color: #bfdd7e;
 }
 
+.number:active, .decimal:active, #result:active{
+    background-color: rgb(245, 245, 245);
+}
 
 
 #zero{

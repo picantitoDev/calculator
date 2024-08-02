@@ -17,6 +17,18 @@ clearButton.addEventListener("click", function () {
     operator = null;
 });
 
+let delButton = document.getElementById("delete");
+delButton.addEventListener("click", function () {
+    if (!(displayValue.innerHTML.length === 1)) {
+        let newValue = displayValue.innerHTML.slice(0, -1);
+        displayValue.innerHTML = newValue;
+        first = displayValue.innerHTML;
+    } else {
+        displayValue.innerHTML = "0";
+        first = displayValue.innerHTML;
+    }
+});
+
 let resultButton = document.getElementById("result");
 resultButton.addEventListener("click", function () {
     let result = operate(operator, parseInt(first), parseInt(second));
@@ -29,6 +41,26 @@ resultButton.addEventListener("click", function () {
     console.log("clicked");
 });
 
+let negateButton = document.getElementById("negate");
+negateButton.addEventListener("click", function () {
+
+    let currentValue = displayValue.innerHTML;
+
+    if (currentValue !== "0") {
+        if (currentValue.charAt(0) === '-') {
+            displayValue.innerHTML = currentValue.slice(1);
+        } else {
+            displayValue.innerHTML = "-" + currentValue;
+        }
+
+        if (isOperating) {
+            second = displayValue.innerHTML;
+        } else {
+            first = displayValue.innerHTML;
+        }
+    }
+
+});
 
 let numbers = document.getElementsByClassName("number");
 for (let button of numbers) {
@@ -54,9 +86,9 @@ for (let op of operations) {
 
 function populate(element) {
 
-    let length = displayValue.innerHTML.length;
+    let length = displayValue.innerHTML.length + 1;
 
-    if (length !== 10 && !isOperating) {
+    if (length <= 9 && !isOperating) {
         if (initialZero || displayValue.innerHTML.charAt(0) === '0') {
             displayValue.innerHTML = element.innerHTML;
             initialZero = false;
@@ -65,7 +97,7 @@ function populate(element) {
         }
         first = displayValue.innerHTML;
     }
-    else if (length !== 10 && isOperating) {
+    else if (length <= 9 && isOperating) {
         displayValue.innerHTML === "0";
         if (newOp) {
             displayValue.innerHTML = element.innerHTML;
