@@ -29,9 +29,26 @@ delButton.addEventListener("click", function () {
     }
 });
 
+let decimalButton = document.getElementById("decimal");
+decimalButton.addEventListener("click", function(){
+
+    let currentDisplay = displayValue.innerHTML;
+    if(!currentDisplay.includes(".") && !isOperating){
+        currentDisplay = currentDisplay + ".";
+        first = currentDisplay;
+    }else if (!currentDisplay.includes(".") && isOperating){
+        currentDisplay = currentDisplay + ".";
+        second = currentDisplay;
+    }
+
+    displayValue.innerHTML = currentDisplay;
+
+});
+
 let resultButton = document.getElementById("result");
 resultButton.addEventListener("click", function () {
-    let result = operate(operator, parseInt(first), parseInt(second));
+    let result = operate(operator, parseFloat(first), parseFloat(second));
+    //updateDisplay(result);
     displayValue.innerHTML = result;
     first = displayValue.innerHTML;
     second = null;
@@ -75,7 +92,7 @@ for (let op of operations) {
         if (!isOperating) {
             isOperating = true;
         } else if (isOperating) {
-            let result = operate(operator, parseInt(first), parseInt(second));
+            let result = operate(operator, parseFloat(first), parseFloat(second));
             displayValue.innerHTML = result;
             first = displayValue.innerHTML;
             newOp = true;
@@ -84,9 +101,28 @@ for (let op of operations) {
     });
 }
 
+function updateDisplay(value) {
+    let valueStr = value.toString(); 
+    let isDecimal = false;
+
+    if (valueStr.includes(".")) {
+        isDecimal = true;
+    }
+
+    if (valueStr.length > 9 && !isDecimal) {
+        displayValue.innerHTML = parseFloat(value).toExponential(4);
+    }
+    else if(valueStr.length > 9 && isDecimal){
+        displayValue.innerHTML = Math.round(parseFloat(value), (6));
+    }
+    else {
+        displayValue.innerHTML = valueStr; 
+    }
+}
+
 function populate(element) {
 
-    let length = displayValue.innerHTML.length + 1;
+    let length = displayValue.innerHTML.length;
 
     if (length <= 9 && !isOperating) {
         if (initialZero || displayValue.innerHTML.charAt(0) === '0') {
@@ -107,10 +143,6 @@ function populate(element) {
         }
         second = displayValue.innerHTML;
     }
-    console.log(isOperating);
-    console.log(first);
-    console.log(operator);
-    console.log(second);
 }
 
 

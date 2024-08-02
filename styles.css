@@ -1,6 +1,10 @@
-html, body {
-    height: 100%; /* Ensure body covers full viewport height */
-    margin: 0;    /* Remove default margin */
+html,
+body {
+    height: 100%;
+    margin: 0;
+    background: rgb(2, 0, 36);
+    background: linear-gradient(90deg, rgba(2, 0, 36, 1) 0%, rgba(9, 9, 121, 1) 35%, rgba(0, 212, 255, 1) 100%);
+
 }
 
 body {
@@ -9,19 +13,21 @@ body {
     align-items: center;
 }
 
-.buffer{
+.buffer {
     border: 2px solid black;
     border-radius: .8em;
     height: 600px;
     width: 400px;
-    background-color:  #6078ff;
+    background-color: #6078ff;
     padding: 5px;
+    border: 10px solid #6078ff;
+    box-shadow: 10px 10px 10px #273c3f;
 }
 
-.display{
+.display {
     border: 2px solid #273c3f;
     height: 100px;
-    background-color:  #bbd0d3;
+    background-color: #bbd0d3;
     font-family: Arial, Helvetica, sans-serif;
     text-align: end;
     padding-right: 8px;
@@ -33,29 +39,29 @@ body {
     display: flex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    gap: 1px; 
-    padding: 0; 
+    gap: 1px;
+    padding: 0;
 }
 
-.config{
-    background-color:#A4D046;
+.config {
+    background-color: #A4D046;
     color: white;
     font-weight: bold;
-    
+
 }
 
-.operation{
+.operation {
     font-weight: 40%;
     background-color: #E3B261;
 }
 
 
-#divide, #subtract
-{
+#divide,
+#subtract {
     font-size: 2.5rem;
 }
 
-button{
+button {
     height: 95px;
     width: 95px;
     margin: 1px;
@@ -67,19 +73,22 @@ button{
     background-color: white;
 }
 
-.operation:active{
+.operation:active {
     background-color: #ffd798;
 }
 
-.config:active{
+.config:active {
     background-color: #bfdd7e;
 }
 
-.number:active, .decimal:active, #result:active{
+.number:active,
+.decimal:active,
+#result:active,
+#decimal:active {
     background-color: rgb(245, 245, 245);
 }
 
 
-#zero{
-    flex-basis:49%;
+#zero {
+    flex-basis: 49%;
 }
