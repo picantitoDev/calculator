@@ -24,6 +24,7 @@ body {
     background-color:  #bbd0d3;
     font-family: Arial, Helvetica, sans-serif;
     text-align: end;
+    padding-right: 8px;
     font-size: 4.6rem;
     margin: 4px;
 }
@@ -36,16 +37,17 @@ body {
     padding: 0; 
 }
 
-#delete, #clear, .negate{
+#delete, #clear, #negate{
     background-color:#A4D046;
     color: white;
     font-weight: bold;
     
 }
 
-.operator{
+.operation{
     background-color: #E3B261;
 }
+
 
 #divide, #subtract
 {
@@ -63,6 +65,16 @@ button{
     font-weight: 70%;
     background-color: white;
 }
+
+.operation:active{
+    background-color: #ffd798;
+}
+
+.top:active{
+    background-color: #a52222;
+}
+
+
 
 #zero{
     flex-basis:49%;
